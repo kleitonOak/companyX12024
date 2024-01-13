@@ -1,0 +1,22 @@
+-- V1_init_create_tables.sql
+
+-- Create Gender Table
+CREATE TABLE TB_GENDER (
+    ID_GENDER SERIAL PRIMARY KEY,
+    NAME VARCHAR(10) NOT NULL
+);
+
+-- Insert Default Genders (Modify as needed)
+INSERT INTO TB_GENDER (NAME) VALUES
+('Male'),
+('Female'),
+('Other');
+
+-- Create Person Table
+CREATE TABLE TB_PERSON (
+    ID_PERSON SERIAL PRIMARY KEY,
+    ID_GENDER BIGINT NOT NULL,
+    FULL_NAME VARCHAR(50) NOT NULL,
+    BIRTHDATE DATE,
+    CONSTRAINT FK_PERSON_GENDER FOREIGN KEY (ID_GENDER) REFERENCES TB_GENDER (ID_GENDER)
+);
